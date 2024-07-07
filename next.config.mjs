@@ -1,4 +1,9 @@
+import { withNextVideo } from "next-video/process";
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        domains: ['localhost','pics.dmm.co.jp','t3.ftcdn.net']
+    }
+}
 
-export default nextConfig;
+export default withNextVideo(nextConfig);

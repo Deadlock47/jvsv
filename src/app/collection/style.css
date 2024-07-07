@@ -1,0 +1,17 @@
+.link-underline {
+    border-bottom-width: 0;
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+    background-size: 0 3px;
+    background-position: 0 60%;
+    background-repeat: no-repeat;
+    transition: background-size .2s ease-in-out;
+}
+
+.link-underline-black {
+    background-image: linear-gradient(transparent, transparent), linear-gradient(rgb(8, 7, 8), rgb(28, 26, 28))
+}
+
+.link-underline:hover {
+    background-size: 100% 3px;
+    background-position: 0 60%;
+}
