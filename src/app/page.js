@@ -22,9 +22,7 @@ export default function Home() {
    <div className="w-screen h-screen overflow-x-hidden bg-neutral-900" >
       <div className="h-[82px] flex flex-row  justify-between pl-10 pr-10 items-center bg-[#2e2e2e]" >
         <div className="flex flex-row gap-2" >
-          <input type="text" onChange={(e)=>{
-            setCodeid(e.target.value)
-          }} className="bg-neutral-900 rounded-lg  border-white border-1 p-3 pt-2 pb-2 w-96 " placeholder="Enter the code" ></input>
+          <input type="text" className="bg-neutral-900 rounded-lg  border-white border-1 p-3 pt-2 pb-2 w-96 " placeholder="Enter the code" ></input>
           <div onClick={()=>{
             // console.log(inputRef.current.value)
             const codename = codeid.toUpperCase()
