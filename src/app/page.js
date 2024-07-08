@@ -10,7 +10,7 @@ import { useRef } from "react";
 
 export default function Home() {
   // console.log(myPage)
-  const isServer = typeof window === 'undefined'
+  const isServer = (typeof window === 'undefined')
   // const inputRef = useRef()
   // localStorage.setItem("codeList",jav_codes);
   const [codelist , setCodelist] = useState( !isServer ? localStorage.getItem("codeList")?.split(","):[])
@@ -44,7 +44,7 @@ export default function Home() {
             setCodeid("");
             window.location.reload()
           }} 
-          className="bg-yellow-700  h-full pt-2 pb-2 pl-2 pr-2 mt-0  w-fit  rounded-lg ml-4 ">
+          className="bg-yellow-700 cursor-pointer h-full pt-2 pb-2 pl-2 pr-2 mt-0  w-fit  rounded-lg ml-4 ">
             Search
           </div>
         </div>

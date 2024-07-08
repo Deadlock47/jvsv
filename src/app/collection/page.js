@@ -29,14 +29,14 @@ export default function Page(){
                     <div onClick={()=>{
                         if(!playlistNames.includes(playlistName))
                             {
-                                if(!isServer)localStorage.setItem("playlists",[...playlistNames,playlistName]);
-                                setPlaylistNames( !isServer ? localStorage.getItem("playlists")?.split(',') : [])
+                                if(!isServer)localStorage?.setItem("playlists",[...playlistNames,playlistName]);
+                                setPlaylistNames( !isServer ? localStorage?.getItem("playlists")?.split(',') : [])
                                 alert("Playlist created ✅✅")
                             }
                         else{
                             alert("playlist already exists")
                         }
-                    }} className="bg-yellow-500 text-4xl w-10 h-10 rounded-xl pl-2  font-bold" >
+                    }} className="bg-yellow-500 text-4xl w-10 h-10 cursor-pointer rounded-xl pl-2  font-bold" >
                                     +
                     </div>
                 </div>
