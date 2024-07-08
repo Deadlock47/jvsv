@@ -30,7 +30,7 @@ export default function Home() {
           <div 
           onClick={()=>{
             // console.log(inputRef.current.value)
-            const codename = codeid?.toUpperCase()
+            const codename = codeid.toUpperCase()
             if(codelist?.includes(codename))
             {
               alert("jav already added")

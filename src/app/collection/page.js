@@ -27,7 +27,7 @@ export default function Page(){
                 <div className=" w-fit flex flex-row gap-2 ">
                     <input type="text" onChange={(e)=>setPlaylistName(e.target.value)}   placeholder="New playlist" className="p-2 pt-1 pb-1 text-black rounded-xl" ></input>
                     <div onClick={()=>{
-                        if(!playlistNames.includes(playlistName))
+                        if(!playlistNames?.includes(playlistName))
                             {
                                 if(!isServer)localStorage?.setItem("playlists",[...playlistNames,playlistName]);
                                 setPlaylistNames( !isServer ? localStorage?.getItem("playlists")?.split(',') : [])
