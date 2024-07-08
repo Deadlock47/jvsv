@@ -13,7 +13,7 @@ export default function Home() {
   const isServer = typeof window === 'undefined'
   // const inputRef = useRef()
   // localStorage.setItem("codeList",jav_codes);
-  const [codelist , setCodelist] = useState( !isServer ? localStorage.getItem("codeList").split(","):[])
+  const [codelist , setCodelist] = useState( !isServer ? localStorage.getItem("codeList")?.split(","):[])
   const [codeid , setCodeid] = useState("")
   useEffect(()=>{
    
