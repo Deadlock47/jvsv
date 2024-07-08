@@ -13,7 +13,7 @@ export default function Home() {
   const isServer = typeof window === 'undefined'
   // const inputRef = useRef()
   // localStorage.setItem("codeList",jav_codes);
-  const [codelist , setCodelist] = useState( !isServer ? localStorage.getItem("codeList").split(","):"")
+  const [codelist , setCodelist] = useState( !isServer ? localStorage.getItem("codeList").split(","):[])
   const [codeid , setCodeid] = useState("")
   useEffect(()=>{
    
@@ -51,7 +51,7 @@ export default function Home() {
       <div className=" flex flex-wrap flex-row p-5 items-center gap-3  " > 
       {/* <Item code={"ure070"}></Item> */}
       {
-        codelist.map((items,index)=>{
+        codelist?.map((items,index)=>{
           return <Item key={index} code={items}></Item>
         })
       }
