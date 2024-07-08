@@ -37,6 +37,9 @@ export default function Home() {
               return 0;
             }
             if(!isServer) localStorage.setItem("codeList",[codename,...codelist]);
+            else{
+              console.log("its a server" , codename)
+            }
             setCodelist( !isServer ? localStorage.getItem("codeList").split(","):[]);
             setCodeid("");
             window.location.reload()
