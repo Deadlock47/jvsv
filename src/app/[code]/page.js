@@ -24,7 +24,7 @@ export default function page({params , name}) {
   const [poster,setPoster] = useState("");
   const [screenshots , setScreenshots] = useState([])
   const [actress , setActress] = useState([]);
-  const [playlistNames , setPlaylistNames] = useState(!isServer ? localStorage.getItem("playlists").split(','): [])
+  const [playlistNames , setPlaylistNames] = useState(!isServer ? localStorage.getItem("playlists")?.split(','): [])
   const [showPlaylist , setShowPlaylist] = useState(false)
 
   

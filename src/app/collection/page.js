@@ -9,14 +9,14 @@ import { FaEdit } from "react-icons/fa";
 import { code } from "@nextui-org/react";
 export default function Page(){
     const isServer = typeof window === 'undefined'
-    const [playlistNames , setPlaylistNames] = useState((!isServer)?localStorage.getItem("playlists").split(","):[]);
+    const [playlistNames , setPlaylistNames] = useState((!isServer)?localStorage.getItem("playlists")?.split(","):[]);
     const [activeName, setActiveName] = useState("maid")
     const [playlistName , setPlaylistName] = useState("");
-    const [currentPlaylistDetails ,setCurrentPlaylistDetails] = useState(!isServer ? localStorage.getItem(activeName).split(","):[]);
+    const [currentPlaylistDetails ,setCurrentPlaylistDetails] = useState(!isServer ? localStorage.getItem(activeName)?.split(","):[]);
     const [codename , setCodename] = useState("")
     // console.log(localStorage.getItem("playlists").split(','))
     useEffect(()=>{
-        if(!isServer) setCurrentPlaylistDetails(localStorage.getItem(activeName).split(','))
+        if(!isServer) setCurrentPlaylistDetails(localStorage.getItem(activeName)?.split(','))
     },[activeName])
     return (
         <div className="w-screen h-screen overflow-x-hidden bg-neutral-900" >
@@ -30,7 +30,7 @@ export default function Page(){
                         if(!playlistNames.includes(playlistName))
                             {
                                 if(!isServer)localStorage.setItem("playlists",[...playlistNames,playlistName]);
-                                setPlaylistNames( !isServer ? localStorage.getItem("playlists").split(',') : [])
+                                setPlaylistNames( !isServer ? localStorage.getItem("playlists")?.split(',') : [])
                                 alert("Playlist created ✅✅")
                             }
                         else{
@@ -104,7 +104,7 @@ export default function Page(){
                                     
                                     setCurrentPlaylistDetails(currentPlaylistDetails.splice(idx,1));
                                     if(!isServer)localStorage.setItem(activeName,[...currentPlaylistDetails]);
-                                    setCurrentPlaylistDetails( !isServer ? localStorage.getItem(activeName).split(',') : [] );
+                                    setCurrentPlaylistDetails( !isServer ? localStorage.getItem(activeName)?.split(',') : [] );
                                     alert("deleted successfully " + code)
                                 }}
                                 className="relative w-fit h-fit top-14  bg-black rounded-full z-50">
