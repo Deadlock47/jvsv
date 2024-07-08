@@ -103,7 +103,10 @@ export default function Page(){
                                     // if(idx > 0) idx-=1;
                                     
                                     setCurrentPlaylistDetails(currentPlaylistDetails.splice(idx,1));
-                                    if(!isServer)localStorage.setItem(activeName,[...currentPlaylistDetails]);
+                                    if(!isServer) localStorage.setItem(activeName,[...currentPlaylistDetails]);
+                                    else{
+                                        console.log("its a server bro!!!!")
+                                    }
                                     setCurrentPlaylistDetails( !isServer ? localStorage.getItem(activeName)?.split(',') : [] );
                                     alert("deleted successfully " + code)
                                 }}
