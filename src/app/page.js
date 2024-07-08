@@ -34,7 +34,7 @@ export default function Home() {
               return 0;
             }
             if(!isServer) localStorage.setItem("codeList",[codename,...codelist]);
-            setCodelist( !isServer ? localStorage.getItem("codeList").split(","):"");
+            setCodelist( !isServer ? localStorage.getItem("codeList").split(","):[]);
             setCodeid("");
             window.location.reload()
           }} className="bg-yellow-700  h-full pt-2 pb-2 pl-2 pr-2 mt-0  w-fit  rounded-lg ml-4 ">
