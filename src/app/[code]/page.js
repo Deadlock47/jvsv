@@ -15,14 +15,16 @@ import Link from 'next/link'
 export default function page({params , name}) {
   const paramsName = usePathname()
   const searchParams = useSearchParams();
+
+  const isServer = typeof window === 'undefined'
   // const arr = searchParams.getAll("data");
   // console.log(paramsName.slice(1))
-  const [codeData , setCodeData] = useState(JSON.parse(localStorage.getItem(paramsName.slice(1))));
+  const [codeData , setCodeData] = useState( !isServer ? JSON.parse(localStorage.getItem(paramsName.slice(1))):"");
   const [tags , setTags] = useState([]);
   const [poster,setPoster] = useState("");
   const [screenshots , setScreenshots] = useState([])
   const [actress , setActress] = useState([]);
-  const [playlistNames , setPlaylistNames] = useState(localStorage.getItem("playlists").split(','))
+  const [playlistNames , setPlaylistNames] = useState(!isServer ? localStorage.getItem("playlists").split(','): [])
   const [showPlaylist , setShowPlaylist] = useState(false)
 
   
@@ -30,7 +32,7 @@ export default function page({params , name}) {
   useEffect(()=>{
     
     // document.title(codeData["id"])
-    const decodedData = JSON.parse(localStorage.getItem(paramsName.slice(1)));
+    const decodedData = JSON.parse( !isServer ? localStorage.getItem(paramsName.slice(1)):"");
     console.log(decodedData)
     setCodeData(decodedData)
     setScreenshots(decodedData?.screenshots)
@@ -72,7 +74,7 @@ export default function page({params , name}) {
                               }
                             else{
 
-                              localStorage.setItem(item,[...codelist , codeData["id"]])
+                              if(!isServer)localStorage.setItem(item,[...codelist , codeData["id"]])
                               alert(`added to ${item} successfully`)
                             }
                           }} >

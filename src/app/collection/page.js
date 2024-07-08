@@ -8,15 +8,15 @@ import { FaEdit } from "react-icons/fa";
 
 import { code } from "@nextui-org/react";
 export default function Page(){
-
-    const [playlistNames , setPlaylistNames] = useState(localStorage.getItem("playlists").split(","));
+    const isServer = typeof window === 'undefined'
+    const [playlistNames , setPlaylistNames] = useState((!isServer)?localStorage.getItem("playlists").split(","):[]);
     const [activeName, setActiveName] = useState("maid")
     const [playlistName , setPlaylistName] = useState("");
-    const [currentPlaylistDetails ,setCurrentPlaylistDetails] = useState(localStorage.getItem(activeName).split(","));
-    const [ codename , setCodename] = useState("")
+    const [currentPlaylistDetails ,setCurrentPlaylistDetails] = useState(!isServer ? localStorage.getItem(activeName).split(","):[]);
+    const [codename , setCodename] = useState("")
     // console.log(localStorage.getItem("playlists").split(','))
     useEffect(()=>{
-        setCurrentPlaylistDetails(localStorage.getItem(activeName).split(','))
+        if(!isServer) setCurrentPlaylistDetails(localStorage.getItem(activeName).split(','))
     },[activeName])
     return (
         <div className="w-screen h-screen overflow-x-hidden bg-neutral-900" >
@@ -29,8 +29,8 @@ export default function Page(){
                     <div onClick={()=>{
                         if(!playlistNames.includes(playlistName))
                             {
-                                localStorage.setItem("playlists",[...playlistNames,playlistName]);
-                                setPlaylistNames(  localStorage.getItem("playlists").split(','))
+                                if(!isServer)localStorage.setItem("playlists",[...playlistNames,playlistName]);
+                                setPlaylistNames( !isServer ? localStorage.getItem("playlists").split(',') : [])
                                 alert("Playlist created ✅✅")
                             }
                         else{
@@ -70,9 +70,9 @@ export default function Page(){
                                 }
                             else{
 
-                                localStorage.setItem(activeName,[...currentPlaylistDetails,codename])
+                                if(!isServer) localStorage.setItem(activeName,[...currentPlaylistDetails,codename])
                                 alert("Added successfully")
-                                setCurrentPlaylistDetails(localStorage.getItem(activeName))
+                                setCurrentPlaylistDetails( !isServer ? localStorage.getItem(activeName) : "")
                             }
                         }}
                         className=" h-max font-bold p-1 rounded-md bg-red-300" >
@@ -103,8 +103,8 @@ export default function Page(){
                                     // if(idx > 0) idx-=1;
                                     
                                     setCurrentPlaylistDetails(currentPlaylistDetails.splice(idx,1));
-                                    localStorage.setItem(activeName,[...currentPlaylistDetails]);
-                                    setCurrentPlaylistDetails(localStorage.getItem(activeName).split(','));
+                                    if(!isServer)localStorage.setItem(activeName,[...currentPlaylistDetails]);
+                                    setCurrentPlaylistDetails( !isServer ? localStorage.getItem(activeName).split(',') : [] );
                                     alert("deleted successfully " + code)
                                 }}
                                 className="relative w-fit h-fit top-14  bg-black rounded-full z-50">

@@ -10,8 +10,11 @@ import Link from 'next/link'
 
 
 export const Item = ({code})=>{
+
+    const isServer = typeof window === 'undefined'
+
     const [loading,setLoading] = useState(true)
-    const [javData , setJavData] = useState(JSON.parse(localStorage.getItem(code))||"")
+    const [javData , setJavData] = useState( !isServer ? JSON.parse(localStorage.getItem(code))||"":"")
   
   
     const router = useRouter()
@@ -27,7 +30,7 @@ export const Item = ({code})=>{
             const data = await res.json();
             setJavData(data);
             // lsJavData[code] = JSON.stringify(data);
-            localStorage.setItem(code,JSON.stringify(data));
+            if(!isServer) localStorage.setItem(code,JSON.stringify(data));
             setJavData(data)
             // console.log(javData)
             setLoading(true)
