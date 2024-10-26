@@ -15,6 +15,7 @@ import Link from 'next/link'
 export default function page({params , name}) {
   const paramsName = usePathname()
   const searchParams = useSearchParams();
+  // const delay = ms => new Promise(res => setTimeout(res, ms));
 
   const isServer = typeof window === 'undefined'
   // const arr = searchParams.getAll("data");
@@ -40,7 +41,7 @@ export default function page({params , name}) {
     // console.log(decodedData?.screenshots)
     setTags(decodedData?.tags)
     setPoster(decodedData?.poster)
-  },[codeData])
+  },[])
     // console.log(searchParams.get("actress"))
   const url = "https://cc3001.dmm.co.jp/litevideo/freepv/d/das/dass00388/dass00388hhb.mp4";
   return (
@@ -93,13 +94,21 @@ export default function page({params , name}) {
 
           </div>
           <div className=' h-[calc(70%)]  w-[calc(60%)]  border-white rounded-xl  flex justify-center mt-10' >
-          <Video poster={poster} src={codeData["preview"]}
-            className="rounded-lg task-video "
-          ></Video>
-              {/* <Image src={poster}  
-                 className="w-auto  h-auto    object-cover rounded-lg overflow-hidden object-center"
-                  width={1080} height={1250} alt={"poster"} quality={100} loader={``}
-              ></Image> */}
+                
+                  <video
+          poster={poster}
+          onMouseOver={async (event) => {
+            // await delay(2000);
+            event.target.play();
+            // event.target.playbackRate = 2.0;
+          }}
+          onMouseOut={event => event.target.pause()}
+          src={`${codeData['preview']}`} >
+          </video>
+          <Image src={poster}  
+              className="w-auto  h-auto object-cover   rounded-lg overflow-hidden object-center"
+              width={1080} height={1250} alt={"poster"} quality={100} loader={``}
+          ></Image>
          </div>
         <div className=' pl-60 pr-60 mb-20 pt-10 w-screen '>
           <p className='font-semibold text-xl text-center ' >

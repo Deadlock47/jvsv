@@ -11,14 +11,14 @@ export default function SliderImages({images}) {
     const [currentImageidx , setCurrentImageidx]  = useState(0);
     const [displayScreen , setDisplayScreen] = useState(false)
     // console.log(hqimages)
-    document.addEventListener("keyup",(e)=>{
-        console.log(e.key ) 
-        if(e.key == "ArrowRight")
-            setCurrentImageidx(Math.min(images.length-1,currentImageidx + 1));
-        if(e.key == "ArrowLeft")
-            setCurrentImageidx(Math.max(0,currentImageidx - 1));
-        console.log(currentImageidx)
-    })
+    // document.addEventListener("keyup",(e)=>{
+    //     console.log(e.key ) 
+    //     if(e.key == "ArrowRight")
+    //         setCurrentImageidx(Math.min(images.length-1,currentImageidx + 1));
+    //     if(e.key == "ArrowLeft")
+    //         setCurrentImageidx(Math.max(0,currentImageidx - 1));
+    //     console.log(currentImageidx)
+    // })
 
     // console.log(event.key)
     useEffect(()=>{
